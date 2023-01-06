@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import './app.css'
 
 function App() {
+  const [list, setList] = useState([
+    { id: 1, name: 'Планирование', done: false },
+    { id: 2, name: 'Вёрстка', done: false },
+    { id: 3, name: 'Разметка НТМЛ', done: false },
+    { id: 4, name: 'Тестирование', done: false },
+  ])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input type='text' />
+      <button type='button'>Добавить</button>
+      <div className='box'>
+      <ul className='list'>
+        {
+          list.map((el) => <li>
+            <button type='button'>Удалить</button>
+            <button type='button'>Сделано</button>
+            <span>{el.name}</span>
+          </li>)
+        }
+      </ul>
+      </div>
     </div>
   );
 }
